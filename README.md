@@ -1,5 +1,12 @@
 # d3-sankey
-基于D3.js 和插件D3-sankey实现的桑基图
+基于D3.js 和插件D3-sankey实现的桑基图例子
+
+![](./screenshots/show.gif)
+
+功能点：
+* 1 基于最新版本的d3.js
+* 2 添加了跟随鼠标移动的tooltip提示
+* 3 节点添加了拖拽事件
 
 参考资料：
 * https://github.com/d3/d3   d3.js github地址
