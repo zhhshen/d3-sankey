@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sankey</title>
+  <style>
+    body {
+      padding: 10px;
+      min-width: 600px;
+      max-width: 1200px;
+      margin: auto;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      background: #e4e4e4;
+    }
+    #chart {
+      background: #fff;
+      box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+      margin: 0 auto;
+      padding: 30px 40px;
+      width: 960px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      position: relative;
+    }
+    .chart-title {
+      padding: 10px 0 20px;
+      font-size: 16px;
+    }
+    .node rect {
+      fill-opacity: .9;
+      shape-rendering: crispEdges;
+      stroke-width: 0;
+      cursor: move;
+    }
+    .node text {
+      text-shadow: 0 1px 0 #fff;
+    }
+    .link {
+      fill: none;
+      stroke: #ddd;
+      stroke-opacity: 0.5;
+      cursor: pointer;
+    }
+    .link title {
+      visibility: hidden;
+    }
+    .link:hover {
+      stroke-opacity: 1;
+    }
+    .tooltip {
+        position: absolute;
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 3px;
+        pointer-events: none;
+        max-width: 200px;
+        display: none;
+        box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+        font-size: 12px;
+    }
+  </style>
+  <script src="./libs/d3/d3.min.js"></script>
+  <script src="./libs/d3-sankey/d3-sankey.js"></script>
+  <script src="./libs/d3-sankey-util.js"></script>
+</head>
+<body>
+  <div id="chart">
+    <div class="chart-title">
+      <span>用户购买商品状态</span>
+    </div>
+  </div>
+  <script>
+  var product= {
+    nodes: [
+      {
+          name: "加入购物车",
+          value: 3
+      },
+      {
+          name: "下单",
+          value: 2
+      },
+      {
+          name:"付款",
+          value:2
+      },
+      {
+          name:"加入购物车",
+          value:3
+      },
+      {
+          name:"下单",
+          value:5
+      },
+      {
+          name:"付款",
+          value:3
+      },
+      {
+          name:"收货",
+          value:2
+      },
+      {
+          name:"下单",
+          value:2
+      },
+      {
+          name:"付款",
+          value:8
+      },
+      {
+          name:"申请退款",
+          value:1
+      },
+      {
+          name:"收货",
+          value:1
+      },
+      {
+          name:"加入购物车",
+          value:1
+      },
+      {
+          name:"付款",
+          value:4
+      },
+      {
+          name:"收货",
+          value:3
+      },
+      {
+          name:"付款",
+          value:1
+      },
+      {
+          name:"申请退款",
+          value:3
+      },
+      {
+          name:"收货",
+          value:7
+      },
+      {
+          name:"退货",
+          value:2
+      },
+      {
+          name:"收货",
+          value:1
+      }
+    ],
+    links: [
+      {
+          source:5,
+          target:10,
+          value:1
+      },
+      {
+          source:2,
+          target:6,
+          value:2
+      },
+      {
+          source:1,
+          target:5,
+          value:2
+      },
+      {
+          source:8,
+          target:16,
+          value:4
+      },
+      {
+          source:3,
+          target:8,
+          value:2
+      },
+      {
+          source:7,
+          target:12,
+          value:2
+      },
+      {
+          source:8,
+          target:13,
+          value:2
+      },
+      {
+          source:3,
+          target:7,
+          value:1
+      },
+      {
+          source:12,
+          target:15,
+          value:1
+      },
+      {
+          source:5,
+          target:13,
+          value:1
+      },
+      {
+          source:13,
+          target:17,
+          value:1
+      },
+      {
+          source:0,
+          target:5,
+          value:1
+      },
+      {
+          source:14,
+          target:18,
+          value:1
+      },
+      {
+          source:11,
+          target:14,
+          value:1
+      },
+      {
+          source:10,
+          target:17,
+          value:1
+      },
+      {
+          source:8,
+          target:15,
+          value:2
+      },
+      {
+          source:0,
+          target:4,
+          value:2
+      },
+      {
+          source:12,
+          target:16,
+          value:3
+      },
+      {
+          source:4,
+          target:8,
+          value:5
+      },
+      {
+          source:5,
+          target:9,
+          value:1
+      }
+    ]
+  }
+    renderSankey({
+      el: 'chart',
+      layoutStyle: {
+        width: 960,
+        height: 440
+      },
+      data: product
+    })
+</script>
+</body>
+</html>
